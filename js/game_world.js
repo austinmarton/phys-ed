@@ -21,12 +21,14 @@
 var WIDTH = 1200;
 var HEIGHT = 400;
 
-//var gravity = 0.61;	/* Pluto */
-//var gravity = 1.63;	/* Moon */
-//var gravity = 3.73;	/* Mars */
-//var gravity = 9.81;	/* Earth */
-//var gravity = 11.19;	/* Saturn */
-var gravity = 25.93;	/* Jupiter */
+var gravity_pluto = 0.61;	/* Pluto */
+var gravity_moon = 1.63;	/* Moon */
+var gravity_mars = 3.73;	/* Mars */
+var gravity_earth = 9.81;	/* Earth */
+var gravity_saturn = 11.19;	/* Saturn */
+var gravity_jupiter = 25.93;	/* Jupiter */
+
+var gravity = gravity_jupiter;
 
 var rho = 1.2; /* Air */
 //var rho = 1000; /* Water */

@@ -53,7 +53,20 @@
 <tr><td>input</td><td id="debug_input"></td></tr>
 </table>
 <br>
+<form>
+Gravity:
+<select onchange="gravityHandler(this.options[this.selectedIndex].value)">
+    <option value="jupiter">Jupiter (25.93)</option>
+    <option value="saturn">Saturn (11.19)</option>
+    <option value="earth">Earth (9.81)</option>
+    <option value="mars">Mars (3.73)</option>
+    <option value="moon">Moon (1.63)</option>
+    <option value="pluto">Pluto (0.61)</option>
+</select>
+</form>
+<br>
 <input type="button" id="pauseButton" value="Pause" onClick="pauseHandler()"></input>
+
 </center>
 
 </div>
@@ -62,7 +75,9 @@
 
 <canvas id="viewCanvas" width="400" height="400"></canvas><br>
 
-</td><td width="300"></td></tr></table>
+</td>
+
+<td width="300"></td></tr></table>
 
 <br>
 <canvas id="boardCanvas" width="300" height="280" style="display:none"></canvas><br>

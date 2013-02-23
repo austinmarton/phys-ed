@@ -220,6 +220,32 @@ function modHandler(e)
 	}
 }
 
+function gravityHandler(planet)
+{
+	switch (planet) {
+	case "pluto":
+		gravity = gravity_pluto;
+		break;
+	case "moon":
+		gravity = gravity_moon;
+		break;
+	case "mars":
+		gravity = gravity_mars;
+		break;
+	case "earth":
+		gravity = gravity_earth;
+		break;
+	case "saturn":
+		gravity = gravity_saturn;
+		break;
+	case "jupiter":
+		gravity = gravity_jupiter;
+		break;
+	default:
+		break;
+	}
+}
+
 function initInput()
 {
 	input = new userInput();
