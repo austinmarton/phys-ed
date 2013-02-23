@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<title>Drop</title>
+
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+
+<script type="text/javascript" src="js/vector.js"></script>
+<script type="text/javascript" src="js/physics_collision.js"></script>
+
+<script type="text/javascript" src="js/game_world.js"></script>
+<script type="text/javascript" src="js/game_state.js"></script>
+
+<script type="text/javascript" src="js/game_loop.js"></script>
+<script type="text/javascript" src="js/game_logic.js"></script>
+<script type="text/javascript" src="js/game_maps.js"></script>
+<script type="text/javascript" src="js/game_draw.js"></script>
+<script type="text/javascript" src="js/game_input.js"></script>
+
+<script type="text/javascript" src="js/sprite_static.js"></script>
+<script type="text/javascript" src="js/sprite_dynamic.js"></script>
+<script type="text/javascript" src="js/sprite_player.js"></script>
+
+</head>
+
+<body>
+
+<input style="font-family: courier,monospace" type="button" id="modButton" value="Mod Mode" onClick="modHandler()"></input>
+
+<center>
+<hd1 style="font-family: courier,monospace">PHYS ED</hr1><br><br>
+
+<table><tr><td width="300">
+
+<!-- Debug output -->
+<div id="debugControls" style="display:none">
+
+<a href="https://github.com/austinmarton/phys-ed"><img style="position: absolute; top: 0; right: 0; border: 0;" src="images/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+<img style="position: absolute; top: 40px; left: 10px; border: 0;" src="images/gplv3-127x51.png" alt="GPLv3 Free Software">
+
+<center>
+<div id="frameRate"></div><div id="framePeriod"></div>since last update<br>
+<br>
+<table border="1">
+<tr><td></td><td>x</td><td>y</td></tr>
+<tr><td>position</td><td id="debug_sX"></td><td id="debug_sY"></td></tr>
+<tr><td>velocity</td><td id="debug_vX"></td><td id="debug_vY"></td></tr>
+<tr><td>acceleration</td><td id="debug_aX"></td><td id="debug_aY"></td></tr>
+<tr><td>force</td><td id="debug_fX"></td><td id="debug_fY"></td></tr>
+<tr><td>mouse</td><td id="debug_mouseX"></td><td id="debug_mouseY"></td></tr>
+<tr><td>input</td><td id="debug_input"></td></tr>
+</table>
+<br>
+<input type="button" id="pauseButton" value="Pause" onClick="pauseHandler()"></input>
+</center>
+
+</div>
+
+</td><td>
+
+<canvas id="viewCanvas" width="400" height="400"></canvas><br>
+
+</td><td width="300"></td></tr></table>
+
+<br>
+<canvas id="boardCanvas" width="300" height="280" style="display:none"></canvas><br>
+
+</center>
+
+</body>
+</html>
