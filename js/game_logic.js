@@ -504,7 +504,7 @@ function gameUpdateDebug(dt)
 		document.getElementById('boardCanvas').style.display = "none";
 	}
 
-	var obj = objs_dynamic[0]
+	var obj = objs_dynamic[0];
 	$('#debug_sX').html(Math.round(obj.s.x));
 	$('#debug_sY').html(Math.round(obj.s.y));
 	$('#debug_vX').html(Math.round(obj.v.x));
