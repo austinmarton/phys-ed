@@ -42,7 +42,7 @@ function GameState(state) {
 		this.initLevel = initLevelOne;
 	} else if (state == GameState.STATES.LEVEL_TWO_TITLE) {
 		this.bgcolour = COLOUR.BG_LEVEL2;
-		this.gameDraw = level2IntroDraw;
+		this.gameDraw = titleDraw;
 		this.gameLogic = gameLogicTitle;
 	} else if (state == GameState.STATES.LEVEL_TWO) {
 		this.bgcolour = COLOUR.BG_LEVEL2;
@@ -51,7 +51,7 @@ function GameState(state) {
 		this.initLevel = initLevelTwo;
 	} else if (state == GameState.STATES.GAME_DONE_TITLE) {
 		this.bgcolour = COLOUR.WHITE;
-		this.gameDraw = level2IntroDraw;
+		this.gameDraw = titleDraw;
 		this.gameLogic = gameLogicTitle;
 	} else if (state == GameState.STATES.DEAD) {
 		this.gameDraw = deadDraw;
@@ -75,8 +75,27 @@ GameState.STATES = {
 	LEVEL_ONE : 2,
 	LEVEL_TWO_TITLE : 3,
 	LEVEL_TWO : 4,
-	GAME_DONE_TITLE : 5,
-	GAME_DONE : 6
+	LEVEL_THREE_TITLE : 5,
+	LEVEL_THREE : 6,
+	LEVEL_FOUR_TITLE : 7,
+	LEVEL_FOUR : 8,
+	GAME_DONE_TITLE : 9,
+	GAME_DONE : 10
+};
+
+GameState.prototype.toString = function() {
+	switch (this.current) {
+	case GameState.STATES.TITLE_SCREEN:
+		return "Level 1: Getting to school";
+	case GameState.STATES.LEVEL_TWO_TITLE:
+		return "Level 2: Physical Education";
+	case GameState.STATES.LEVEL_THREE_TITLE:
+		return "Level 3: Lunch time";
+	case GameState.STATES.LEVEL_FOUR_TITLE:
+		return "Level 4: Home time";
+	default:
+		return "";
+	}
 };
 
 function stateTransition(increment)

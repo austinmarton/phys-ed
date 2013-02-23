@@ -207,12 +207,11 @@ function titleDraw()
 {
 	viewContext.fillStyle = state.bgcolour;
 	viewContext.fillRect(0, 0, WIDTH, HEIGHT);
-	viewContext.drawImage(bgImage, 0, 0, bgImage.width, bgImage.height, viewCanvas.width/2 - bgImage.width/4, viewCanvas.height/2 - bgImage.height/4, bgImage.width/2, bgImage.height/2);	
-}
-
-function level2IntroDraw()
-{
-	viewContext.fillStyle = state.bgcolour;
-	viewContext.fillRect(0, 0, WIDTH, HEIGHT);
-	viewContext.drawImage(bgImage, 0, 0, bgImage.width, bgImage.height, viewCanvas.width/2 - bgImage.width/4, viewCanvas.height/2 - bgImage.height/4, bgImage.width/2, bgImage.height/2);	
+	viewContext.drawImage(bgImage, 0, 0, bgImage.width, bgImage.height, viewCanvas.width/2 - bgImage.width/4, viewCanvas.height/2 - bgImage.height/4, bgImage.width/2, bgImage.height/2);
+	
+	viewContext.fillStyle = '#000000';
+	viewContext.font = 'courier monospace 30px';
+	viewContext.textBaseline = 'top';
+	viewContext.textAlign = 'center';
+	viewContext.fillText(state.toString(), viewCanvas.width/2, viewCanvas.width/2 - 100);
 }
