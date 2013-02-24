@@ -41,45 +41,45 @@ function GameState(state) {
 		this.gameLogic = gameLogic;
 		break;
 	case GameState.STATES.TITLE_SCREEN:
-		this.bgcolour = COLOUR.BG;
+		this.bgcolour = COLOUR.BG_LEVEL1;
 		this.gameDraw = titleDraw;
 		this.gameLogic = gameLogicTitle;
 		break;
 	case GameState.STATES.LEVEL_ONE:
-		this.bgcolour = COLOUR.BG;
+		this.bgcolour = COLOUR.BG_LEVEL1;
 		this.gameDraw = basicDraw;
 		this.gameLogic = gameLogic;
 		this.initLevel = initLevelOne;
 		break;
 	case GameState.STATES.LEVEL_TWO_TITLE:
-		this.bgcolour = COLOUR.BG_LEVEL2;
+		this.bgcolour = COLOUR.BG_BRICKS;
 		this.gameDraw = titleDraw;
 		this.gameLogic = gameLogicTitle;
 		break;
 	case GameState.STATES.LEVEL_TWO:
-		this.bgcolour = COLOUR.BG_LEVEL2;
+		this.bgcolour = COLOUR.BG_BRICKS;
 		this.gameDraw = basicDraw;
 		this.gameLogic = gameLogic;
 		this.initLevel = initLevelTwo;
 		break;
 	case GameState.STATES.LEVEL_THREE_TITLE:
-		this.bgcolour = COLOUR.BG_LEVEL2;
+		this.bgcolour = COLOUR.BG_LEVEL3;
 		this.gameDraw = titleDraw;
 		this.gameLogic = gameLogicTitle;
 		break;
 	case GameState.STATES.LEVEL_THREE:
-		this.bgcolour = COLOUR.BG_LEVEL2;
+		this.bgcolour = COLOUR.BG_LEVEL3;
 		this.gameDraw = basicDraw;
 		this.gameLogic = gameLogic;
 		this.initLevel = initLevelThree;
 		break;
 	case GameState.STATES.LEVEL_FOUR_TITLE:
-		this.bgcolour = COLOUR.BG_LEVEL2;
+		this.bgcolour = COLOUR.BG_LEVEL1;
 		this.gameDraw = titleDraw;
 		this.gameLogic = gameLogicTitle;
 		break;
 	case GameState.STATES.LEVEL_FOUR:
-		this.bgcolour = COLOUR.BG_LEVEL2;
+		this.bgcolour = COLOUR.BG_LEVEL1;
 		this.gameDraw = basicDraw;
 		this.gameLogic = gameLogic;
 		this.initLevel = initLevelFour;

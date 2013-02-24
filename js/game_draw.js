@@ -38,7 +38,9 @@ COLOUR = {
 	DOT2 : "#000000",
 	HEALTH_GOOD : "#00FF66",
 	HEALTH_BAD : "#FF3333",
-	BG_LEVEL2 : "#66FFFF"
+	BG_BRICKS : "#FFCC66",
+	BG_LEVEL1 : "#66FFFF",
+	BG_LEVEL3 : "#99FFCC"
 };
 
 var HEALTH_WIDTH = 100;
@@ -52,7 +54,9 @@ var doorImg;
 var ballImg;
 var treeImg;
 var platformTreeImg;
+var platformCloudImg;
 var platformBWImg;
+var gymFloorImg;
 
 var frameCount;
 
@@ -97,8 +101,10 @@ function initDraw()
 
 	bgImage = loadImage("images/dropman.png");
 	platformImg = loadImage("images/ground_grass.png");
+	platformCloudImg = loadImage("images/platform_cloud.png");
 	platformTreeImg = loadImage("images/platform_tree.png");
 	platformBWImg = loadImage("images/ground_grass_bw.png");
+	gymFloorImg = loadImage("images/gym_floor.png");
 	groundImg = platformImg; /* init */
 	
 	pineappleImg = loadImage("images/pineapple.png");

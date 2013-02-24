@@ -71,7 +71,7 @@ function createGoodie(x, y, v_x, v_y, a_x, a_y, rad, mass, img)
  * Maps
  */
 
-/* Level one - gettin to school */
+/* Level one - getting to school */
 function initLevelOne()
 {	
 	/* Player */
@@ -84,14 +84,14 @@ function initLevelOne()
 	/* Static objects */
 	objs_static = new Array();
 	createPlatform(520, 140, 75, 20, platformTreeImg);
-	createPlatform(280, 100, 100, 20, platformImg);
-	createPlatform(140, 240, 20, 20, platformImg);
-	createPlatform(260, 200, 90, 20, platformImg);
+	createPlatform(280, 100, 100, 20, platformCloudImg);
+	createPlatform(140, 240, 20, 20, platformCloudImg);
+	createPlatform(260, 200, 90, 20, platformCloudImg);
 	/* Background images */
 	bg_images = new Array();
 	createBgImage(500, 140, 120, 100, treeImg);
 	/* Ground */
-	groundImg = platformImg;
+	groundImg = platformBWImg;
 	/* Gates */
 	gates = new Array();
 	createGate(900, 80, 20, 40, doorImg);
@@ -119,17 +119,17 @@ function initLevelTwo()
 	
 	/* Static objects */
 	objs_static = new Array();
-	createPlatform(500, 150, 100, 20, platformImg);
-	createPlatform(280, 100, 100, 20, platformImg);
-	createPlatform(140, 240, 20, 20, platformImg);
-	createPlatform(260, 300, 90, 20, platformImg);
-	createPlatform(860, 290, 60, 20, platformImg);
-	createPlatform(690, 200, 90, 20, platformImg);
-	createPlatform(700, 100, 90, 20, platformImg);
+	createPlatform(500, 150, 100, 20, gymFloorImg);
+	createPlatform(280, 100, 100, 20, gymFloorImg);
+	createPlatform(140, 240, 20, 20, gymFloorImg);
+	createPlatform(260, 300, 90, 20, gymFloorImg);
+	createPlatform(860, 290, 60, 20, gymFloorImg);
+	createPlatform(690, 200, 90, 20, gymFloorImg);
+	createPlatform(700, 100, 90, 20, gymFloorImg);
 	/* Background images */
 	bg_images = new Array();
 	/* Ground */
-	groundImg = platformImg;
+	groundImg = gymFloorImg;
 	/* Gates */
 	gates = new Array();
 	createGate(900, 80, 20, 40, doorImg);
@@ -184,7 +184,7 @@ function initLevelThree()
 	createGoodie(300, 140, 0, 0, 0, 0, SIZE_DOT, 10, pineappleImg);
 }
 
-/* Home tiem */
+/* Home time */
 function initLevelFour()
 {
 	/* Level one backwards */
