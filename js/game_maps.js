@@ -103,10 +103,10 @@ function initLevelOne()
 	/* Moving objects */
 	objs_dynamic = new Array();
 	/* Bad things */
-	createProjectile(500, 130, -100, 0, 0, 0, SIZE_DOT*2, 20, ballImg);
-	createProjectile(600, 130, -100, -26, 0, 0, SIZE_DOT, 10, ballImg);
-	createProjectile(340, 65, 160, -26, 0, 0, SIZE_DOT, 10, ballImg);
-	createProjectile(170, 265, -80, 40, 0, 0, SIZE_DOT, 10, ballImg);
+	createProjectile(500, 130, -100, 0, 0, 0, SIZE_DOT*2, 20, rockImg);
+	createProjectile(600, 130, -100, -26, 0, 0, SIZE_DOT, 10, rockImg);
+	createProjectile(340, 65, 160, -26, 0, 0, SIZE_DOT, 10, rockImg);
+	createProjectile(170, 265, -80, 40, 0, 0, SIZE_DOT, 10, rockImg);
 	/* Goodies */
 	createGoodie(150, 280, 0, 0, 0, 0, SIZE_DOT, 10, pineappleImg);
 	createGoodie(300, 140, 0, 0, 0, 0, SIZE_DOT, 10, pineappleImg);
