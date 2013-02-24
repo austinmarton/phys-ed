@@ -19,327 +19,213 @@
  * This file handles the game levels
  */
 
-function createPlatform()
+/* 
+ * helpers
+ */
+function createPlatform(x, y, siz_x, siz_y, img)
 {
-	
+	var e = 0.999;
+	var mass = 8;
+	var pos = new vector(x, y);
+	var size = new vector(siz_x, siz_y);
+	objs_static.push(new SpriteStatic(pos, size, mass, e, img));
+}
+
+function createBgImage(x, y, siz_x, siz_y, img)
+{
+	var e = 0.999;
+	var mass = 8;
+	var pos = new vector(x, y);
+	var size = new vector(siz_x, siz_y);
+	bg_images.push(new SpriteStatic(pos, size, mass, e, img));
+}
+
+function createGate(x, y, siz_x, siz_y, img)
+{
+	var e = 0.999;
+	var mass = 8;
+	var pos = new vector(x, y);
+	var size = new vector(siz_x, siz_y);
+	gates.push(new SpriteStatic(pos, size, mass, e, img));
+}
+
+function createProjectile(x, y, v_x, v_y, a_x, a_y, rad, mass, img)
+{
+	var e = 0.999;
+	var s = new vector(x, y);
+	var v = new vector(v_x, v_y);
+	var a = new vector(a_x, a_y);
+	objs_dynamic.push(new SpriteDynamic(s, v, a, rad, mass, e, OBJ_BAD, img));
+}
+
+function createGoodie(x, y, v_x, v_y, a_x, a_y, rad, mass, img)
+{
+	var e = 0.9;
+	var s = new vector(x, y);
+	var v = new vector(v_x, v_y);
+	var a = new vector(a_x, a_y);
+	objs_dynamic.push(new SpriteDynamic(s, v, a, rad, mass, e, OBJ_GOOD, img));
 }
 
 /*
  * Maps
  */
 
+/* Level one - gettin to school */
 function initLevelOne()
 {	
-	/*
-	 * Player
-	 */
+	/* Player */
 	if (player) {
 		var pos = new vector(80, 150);
 		player.updateState(pos, null_vector, null_vector, null_vector);
 		updateViewReset();
 	}
 	
-	/*
-	 * Static objects 
-	 */
-	
+	/* Static objects */
 	objs_static = new Array();
-	
-	var objTemp;
-	var size = new vector(75, 20);
-	var pos = new vector(520, 140);
-	var e = 0.999;
-	var mass = 8;
-	
-	objTemp = new SpriteStatic(pos, size, mass, e, platformTreeImg);
-	objs_static.push(objTemp);
-
-	size.modify(100, 20);
-	pos.modify(280, 100);
-	objTemp = new SpriteStatic(pos, size, mass, e, platformImg);
-	objs_static.push(objTemp);
-	
-	pos.modify(140, 240);
-	size.modify(20, 20);
-	objTemp = new SpriteStatic(pos, size, mass, e, platformImg);
-	objs_static.push(objTemp);
-	
-	pos.modify(260, 200);
-	size.modify(90, 20);
-	objTemp = new SpriteStatic(pos, size, mass, e, platformImg);
-	objs_static.push(objTemp);
-
-	/*
-	 * Background images
-	 */
+	createPlatform(520, 140, 75, 20, platformTreeImg);
+	createPlatform(280, 100, 100, 20, platformImg);
+	createPlatform(140, 240, 20, 20, platformImg);
+	createPlatform(260, 200, 90, 20, platformImg);
+	/* Background images */
 	bg_images = new Array();
-	
-	size.modify(120, 100);
-	pos.modify(500, 140);
-	objTemp = new SpriteStatic(pos, size, mass, e, treeImg);
-	bg_images.push(objTemp);
-	
-	/* ground *
-	pos.modify(0, 50);
-	size.modify(boardCanvas.width, 50);
-	objTemp = new SpriteStatic(pos, size, mass, e);
-	objs_static.push(objTemp); */
-
-	/* ground */
+	createBgImage(500, 140, 120, 100, treeImg);
+	/* Ground */
 	groundImg = platformImg;
-	
-	/*
-	 * Gates
-	 */
+	/* Gates */
 	gates = new Array();
+	createGate(900, 80, 20, 40, doorImg);
 	
-	size.modify(20, 40);
-	pos.modify(900, 80);
-	
-	objTemp = new SpriteStatic(pos, size, mass, e, doorImg);
-	gates.push(objTemp);
-	
-	/*
-	 * Moving objects
-	 */
-
-	e = 0.999;
-	mass = 10;
-	var S = new vector(250, 230.0);
-	var V = new vector(100.0, 0.0);
-//	V.rotate(-Math.PI/4);
-	var A = new vector(0.0, 0.0);
-
-	/* Array of dots */
+	/* Moving objects */
 	objs_dynamic = new Array();
-
-	var dotTemp;
-			/* S, V, A, radius, mass */
-	dotTemp = new SpriteDynamic(S, V, A, SIZE_DOT, mass, e, OBJ_BAD, ballImg);
-//	objs_dynamic.push(dotTemp);
-	
-	S.x = 500;
-	S.y -= 10;
-	V.x = -100;
-	dotTemp = new SpriteDynamic(S, V, A, SIZE_DOT*2, mass*2, e, OBJ_BAD, ballImg);
-	objs_dynamic.push(dotTemp);
-
-	S.x += 100;
-	V.y = -26;
-	dotTemp = new SpriteDynamic(S, V, A, SIZE_DOT, mass, e, OBJ_BAD, ballImg);
-	objs_dynamic.push(dotTemp);
-
-	S.scale(0.5);
-	S.x += 40;
-	S.y -= 100;
-	V.modify(160, 0);
-	dotTemp = new SpriteDynamic(S, V, A, SIZE_DOT, mass, e, OBJ_BAD, ballImg);
-	objs_dynamic.push(dotTemp);
-
-	S.scale(0.5);
-	S.y += 200;
-	V.modify(-80, 40);
-	dotTemp = new SpriteDynamic(S, V, A, SIZE_DOT, mass, e, OBJ_BAD, ballImg);
-	objs_dynamic.push(dotTemp);
-
+	/* Bad things */
+	createProjectile(500, 130, -100, 0, 0, 0, SIZE_DOT*2, 20, ballImg);
+	createProjectile(600, 130, -100, -26, 0, 0, SIZE_DOT, 10, ballImg);
+	createProjectile(340, 65, 160, -26, 0, 0, SIZE_DOT, 10, ballImg);
+	createProjectile(170, 265, -80, 40, 0, 0, SIZE_DOT, 10, ballImg);
 	/* Goodies */
-	
-	e = 0.9;
-
-	S.modify(150, 280);
-	V.modify(0,0);
-	A.modify(0,0);
-	dotTemp = new SpriteDynamic(S, V, A, SIZE_DOT, mass, e, OBJ_GOOD, pineappleImg);
-	objs_dynamic.push(dotTemp);
-	
-	S.modify(300, 140);
-	V.modify(0,0);
-	A.modify(0,0);
-	dotTemp = new SpriteDynamic(S, V, A, SIZE_DOT, mass, e, OBJ_GOOD, pineappleImg);
-	objs_dynamic.push(dotTemp);
+	createGoodie(150, 280, 0, 0, 0, 0, SIZE_DOT, 10, pineappleImg);
+	createGoodie(300, 140, 0, 0, 0, 0, SIZE_DOT, 10, pineappleImg);
 }
 
-
+/* Level two - Dodgeball */
 function initLevelTwo()
 {
-	/*
-	 * Player
-	 */
+	/* Player */
 	if (player) {
 		player.move(80, 150);
 		updateViewReset();
 	}
 	
-	/*
-	 * Static objects 
-	 */
-	
+	/* Static objects */
 	objs_static = new Array();
-	
-	var objTemp;
-	var size = new vector(100, 20);
-	var pos = new vector(500, 150);
-	var e = 0.999;
-	var mass = 8;
-	
-	objTemp = new SpriteStatic(pos, size, mass, e, platformImg);
-	objs_static.push(objTemp);
-
-	pos.modify(280, 100);
-	objTemp = new SpriteStatic(pos, size, mass, e, platformImg);
-	objs_static.push(objTemp);
-	
-	pos.modify(140, 240);
-	size.modify(20, 20);
-	objTemp = new SpriteStatic(pos, size, mass, e, platformImg);
-	objs_static.push(objTemp);
-	
-	pos.modify(260, 300);
-	size.modify(90, 20);
-	objTemp = new SpriteStatic(pos, size, mass, e, platformImg);
-	objs_static.push(objTemp);
-	
-	pos.modify(860, 290);
-	size.modify(60, 20);
-	objTemp = new SpriteStatic(pos, size, mass, e, platformImg);
-	objs_static.push(objTemp);
-	
-	pos.modify(690, 200);
-	size.modify(90, 20);
-	objTemp = new SpriteStatic(pos, size, mass, e, platformImg);
-	objs_static.push(objTemp);
-	
-	pos.modify(700, 100);
-	size.modify(90, 20);
-	objTemp = new SpriteStatic(pos, size, mass, e, platformImg);
-	objs_static.push(objTemp);
-	
-	/* ground */
+	createPlatform(500, 150, 100, 20, platformImg);
+	createPlatform(280, 100, 100, 20, platformImg);
+	createPlatform(140, 240, 20, 20, platformImg);
+	createPlatform(260, 300, 90, 20, platformImg);
+	createPlatform(860, 290, 60, 20, platformImg);
+	createPlatform(690, 200, 90, 20, platformImg);
+	createPlatform(700, 100, 90, 20, platformImg);
+	/* Background images */
+	bg_images = new Array();
+	/* Ground */
 	groundImg = platformImg;
-	
-	/*
-	 * Gates
-	 */
+	/* Gates */
 	gates = new Array();
+	createGate(900, 80, 20, 40, doorImg);
 	
-	size.modify(20, 40);
-	pos.modify(900, 80);
-	
-	objTemp = new SpriteStatic(pos, size, mass, e, doorImg);
-	gates.push(objTemp);
-	
-	/*
-	 * Moving objects
-	 */
-
-	e = 0.999;
-	mass = 10;
-	var S = new vector(250, 230.0);
-	var V = new vector(100.0, 0.0);
-//	V.rotate(-Math.PI/4);
-	var A = new vector(0.0, 0.0);
-
-	/* Array of dots */
+	/* Moving objects */
 	objs_dynamic = new Array();
-
-	var dotTemp;
-			/* S, V, A, radius, mass */
-	dotTemp = new SpriteDynamic(S, V, A, SIZE_DOT, mass, e, OBJ_BAD, ballImg);
-//	objs_dynamic.push(dotTemp);
-	
-	S.x = 500;
-	S.y -= 10;
-	V.x = -100;
-	dotTemp = new SpriteDynamic(S, V, A, SIZE_DOT*2, mass*2, e, OBJ_BAD, ballImg);
-	objs_dynamic.push(dotTemp);
-
-	S.x += 100;
-	V.y = -26;
-	dotTemp = new SpriteDynamic(S, V, A, SIZE_DOT, mass, e, OBJ_BAD, ballImg);
-	objs_dynamic.push(dotTemp);
-
-	S.scale(0.5);
-	S.x += 40;
-	S.y -= 100;
-	V.modify(160, 0);
-	dotTemp = new SpriteDynamic(S, V, A, SIZE_DOT, mass, e, OBJ_BAD, ballImg);
-	objs_dynamic.push(dotTemp);
-
-	S.scale(0.5);
-	S.y += 200;
-	V.modify(-80, 40);
-	dotTemp = new SpriteDynamic(S, V, A, SIZE_DOT, mass, e, OBJ_BAD, ballImg);
-	objs_dynamic.push(dotTemp);
-
+	/* Bad things */
+	createProjectile(500, 130, -100, 0, 0, 0, SIZE_DOT*2, 20, ballImg);
+	createProjectile(600, 130, -100, -26, 0, 0, SIZE_DOT, 10, ballImg);
+	createProjectile(340, 65, 160, -26, 0, 0, SIZE_DOT, 10, ballImg);
+	createProjectile(170, 265, -80, 40, 0, 0, SIZE_DOT, 10, ballImg);
 	/* Goodies */
-	
-	e = 0.9;
-
-	S.modify(150, 280);
-	V.modify(0,0);
-	A.modify(0,0);
-	dotTemp = new SpriteDynamic(S, V, A, SIZE_DOT, mass, e, OBJ_GOOD, pineappleImg);
-	objs_dynamic.push(dotTemp);
-	
-	S.modify(300, 140);
-	V.modify(0,0);
-	A.modify(0,0);
-	dotTemp = new SpriteDynamic(S, V, A, SIZE_DOT, mass, e, OBJ_GOOD, pineappleImg);
-	objs_dynamic.push(dotTemp);
+	createGoodie(150, 280, 0, 0, 0, 0, SIZE_DOT, 10, pineappleImg);
+	createGoodie(300, 140, 0, 0, 0, 0, SIZE_DOT, 10, pineappleImg);
 }
 
+/* Level three - lunch time */
+function initLevelThree()
+{
+	/* Player */
+	if (player) {
+		player.move(80, 150);
+		updateViewReset();
+	}
+	
+	/* Static objects */
+	objs_static = new Array();
+	createPlatform(500, 150, 100, 20, platformImg);
+	createPlatform(280, 100, 100, 20, platformImg);
+	createPlatform(140, 240, 20, 20, platformImg);
+	createPlatform(260, 300, 90, 20, platformImg);
+	createPlatform(860, 290, 60, 20, platformImg);
+	createPlatform(690, 200, 90, 20, platformImg);
+	createPlatform(700, 100, 90, 20, platformImg);
+	/* Background images */
+	bg_images = new Array();
+	/* Ground */
+	groundImg = platformImg;
+	/* Gates */
+	gates = new Array();
+	createGate(900, 80, 20, 40, doorImg);
+	
+	/* Moving objects */
+	objs_dynamic = new Array();
+	/* Bad things */
+	createProjectile(500, 130, -100, 0, 0, 0, SIZE_DOT*2, 20, ballImg);
+	createProjectile(600, 130, -100, -26, 0, 0, SIZE_DOT, 10, ballImg);
+	createProjectile(340, 65, 160, -26, 0, 0, SIZE_DOT, 10, ballImg);
+	createProjectile(170, 265, -80, 40, 0, 0, SIZE_DOT, 10, ballImg);
+	/* Goodies */
+	createGoodie(150, 280, 0, 0, 0, 0, SIZE_DOT, 10, pineappleImg);
+	createGoodie(300, 140, 0, 0, 0, 0, SIZE_DOT, 10, pineappleImg);
+}
 
+/* Home tiem */
+function initLevelFour()
+{
+	/* Level one backwards */
+	initLevelOne();
+	
+	/* Player */
+	if (player) {
+		player.move(900, 150);
+		player.v.x = -0.01;
+		updateViewReset();
+	}
+	/* Gates */
+	gates = new Array();
+	createGate(80, 80, 20, 40, doorImg);
+}
+
+/* Finished the game */
 function initLevelNone()
 {
-	/*
-	 * Player
-	 */
+	/* Player */
 	if (player) {
 		var pos = new vector(80, 300);
+		player.v.x = 0.01;
 		player.updateState(pos, null_vector, null_vector, null_vector);
 		updateViewReset();
 	}
 	
-	/*
-	 * Static objects 
-	 */
-	
+	/* Static objects */
 	objs_static = new Array();
-	
-	var objTemp;
-	var size = new vector(100, 20);
-	var pos = new vector(500, 150);
-	var e = 0.999;
-	var mass = 8;
-
-	pos.modify(260, 200);
-	size.modify(90, 20);
-	objTemp = new SpriteStatic(pos, size, mass, e, platformBWImg);
-	objs_static.push(objTemp);
-	
-	/*
-	 * Background images
-	 */
+	createPlatform(260, 200, 90, 20, platformBWImg);
+	/* Background images */
 	bg_images = new Array();
-	
-	/* ground */
+	/* Ground */
 	groundImg = platformBWImg;
-	
-	/*
-	 * Gates
-	 */
+	/* Gates */
 	gates = new Array();
+	createGate(900, 80, 20, 40, doorImg);
 	
-	/*
-	 * Moving objects
-	 */
-
+	/* Moving objects */
 	objs_dynamic = new Array();
-
-	var S = new vector(250, 230);
-	var V = null_vector;
-	var A = null_vector;
-
-	objTemp = new SpriteDynamic(S, V, A, SIZE_DOT, mass, e, OBJ_BAD, ballImg);
-	objs_dynamic.push(objTemp);
+	/* Bad things */
+	createProjectile(250, 230, 0, 0, 0, 0, SIZE_DOT, 10, ballImg);
+	/* Goodies */
 }

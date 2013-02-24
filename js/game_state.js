@@ -35,31 +35,62 @@ function GameState(state) {
 	this.initLevel = initLevelNone;
 	
 	/* State specific */
-	if (state == GameState.STATES.LEVEL_ONE) {
+	switch (this.current) {
+	case GameState.STATES.DEAD:
+		this.gameDraw = deadDraw;
+		this.gameLogic = gameLogic;
+		break;
+	case GameState.STATES.TITLE_SCREEN:
+		this.bgcolour = COLOUR.BG;
+		this.gameDraw = titleDraw;
+		this.gameLogic = gameLogicTitle;
+		break;
+	case GameState.STATES.LEVEL_ONE:
 		this.bgcolour = COLOUR.BG;
 		this.gameDraw = basicDraw;
 		this.gameLogic = gameLogic;
 		this.initLevel = initLevelOne;
-	} else if (state == GameState.STATES.LEVEL_TWO_TITLE) {
+		break;
+	case GameState.STATES.LEVEL_TWO_TITLE:
 		this.bgcolour = COLOUR.BG_LEVEL2;
 		this.gameDraw = titleDraw;
 		this.gameLogic = gameLogicTitle;
-	} else if (state == GameState.STATES.LEVEL_TWO) {
+		break;
+	case GameState.STATES.LEVEL_TWO:
 		this.bgcolour = COLOUR.BG_LEVEL2;
 		this.gameDraw = basicDraw;
 		this.gameLogic = gameLogic;
 		this.initLevel = initLevelTwo;
-	} else if (state == GameState.STATES.GAME_DONE_TITLE) {
+		break;
+	case GameState.STATES.LEVEL_THREE_TITLE:
+		this.bgcolour = COLOUR.BG_LEVEL2;
+		this.gameDraw = titleDraw;
+		this.gameLogic = gameLogicTitle;
+		break;
+	case GameState.STATES.LEVEL_THREE:
+		this.bgcolour = COLOUR.BG_LEVEL2;
+		this.gameDraw = basicDraw;
+		this.gameLogic = gameLogic;
+		this.initLevel = initLevelThree;
+		break;
+	case GameState.STATES.LEVEL_FOUR_TITLE:
+		this.bgcolour = COLOUR.BG_LEVEL2;
+		this.gameDraw = titleDraw;
+		this.gameLogic = gameLogicTitle;
+		break;
+	case GameState.STATES.LEVEL_FOUR:
+		this.bgcolour = COLOUR.BG_LEVEL2;
+		this.gameDraw = basicDraw;
+		this.gameLogic = gameLogic;
+		this.initLevel = initLevelFour;
+		break;
+	case GameState.STATES.GAME_DONE_TITLE:
 		this.bgcolour = COLOUR.WHITE;
 		this.gameDraw = titleDraw;
 		this.gameLogic = gameLogicTitle;
-	} else if (state == GameState.STATES.DEAD) {
-		this.gameDraw = deadDraw;
-		this.gameLogic = gameLogic;
-	} else if (state == GameState.STATES.TITLE_SCREEN) {
-		this.bgcolour = COLOUR.BG;
-		this.gameDraw = titleDraw;
-		this.gameLogic = gameLogicTitle;
+		break;
+	default:
+		break;
 	}
 	
 	this.initDraw = initDraw;
@@ -93,6 +124,8 @@ GameState.prototype.toString = function() {
 		return "Level 3: Lunch time";
 	case GameState.STATES.LEVEL_FOUR_TITLE:
 		return "Level 4: Home time";
+	case GameState.STATES.GAME_DONE_TITLE:
+		return "First day of school over!";
 	default:
 		return "";
 	}
