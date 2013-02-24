@@ -37,7 +37,9 @@ function createBgImage(x, y, siz_x, siz_y, img)
 	var mass = 8;
 	var pos = new vector(x, y);
 	var size = new vector(siz_x, siz_y);
-	bg_images.push(new SpriteStatic(pos, size, mass, e, img));
+	var tmpSprite = new SpriteStatic(pos, size, mass, e, img);
+	tmpSprite.tile = false;
+	bg_images.push(tmpSprite);
 }
 
 function createGate(x, y, siz_x, siz_y, img)
@@ -46,7 +48,9 @@ function createGate(x, y, siz_x, siz_y, img)
 	var mass = 8;
 	var pos = new vector(x, y);
 	var size = new vector(siz_x, siz_y);
-	gates.push(new SpriteStatic(pos, size, mass, e, img));
+	var tmpSprite = new SpriteStatic(pos, size, mass, e, img);
+	tmpSprite.tile = false;
+	gates.push(tmpSprite);
 }
 
 function createProjectile(x, y, v_x, v_y, a_x, a_y, rad, mass, img)
@@ -132,7 +136,7 @@ function initLevelTwo()
 	groundImg = gymFloorImg;
 	/* Gates */
 	gates = new Array();
-	createGate(900, 80, 20, 40, doorImg);
+	createGate(880, 330, 20, 40, doorImg);
 	
 	/* Moving objects */
 	objs_dynamic = new Array();

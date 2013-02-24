@@ -32,6 +32,7 @@ function SpriteStatic(S, size, mass, e, image) {
 	this.frame = 0;
 	this.isColliding = false;
 	this.newCollision = false;
+	this.tile = true;
 }
 
 SpriteStatic.prototype.move = function(toX,toY) {
@@ -57,7 +58,25 @@ SpriteStatic.prototype.setColliding = function(isColliding) {
 };
 
 SpriteStatic.prototype.draw = function(context, canvas) {
-						/* image, sx, sy, sw, sh, dx, dy, dw, dh */
-	context.drawImage(this.img, 0, 0, this.img.width, this.img.height, this.s.x - canvas.offset.x, canvas.height-this.s.y + canvas.offset.y, this.size.x, this.size.y);
-	//context.drawImage(this.img, this.s.x, this.s.y);
+	if (this.tile) { /* tile */
+		var src_x, src_y, dst_x, dst_y, x_loop, y_loop;
+		if (this.size.x < this.img.width) {
+			src_x = this.size.x;
+			dst_x = this.size.x;
+			x_loop = 0;
+		} else {
+			src_x = this.img.width;
+			dst_x = this.img.width;
+			x_loop = this.size.x/this.img.width;
+		}
+		
+		for (var ii = 0; ii <= x_loop; ii++) {
+			/* image, sx, sy, sw, sh, dx, dy, dw, dh */
+			context.drawImage(this.img, 0, 0, src_x, this.img.height, this.s.x - canvas.offset.x + ii*src_x, canvas.height-this.s.y + canvas.offset.y, dst_x, this.size.y);
+		}
+	} else { /* stretch */
+		/* image, sx, sy, sw, sh, dx, dy, dw, dh */
+		context.drawImage(this.img, 0, 0, this.img.width, this.img.height, this.s.x - canvas.offset.x, canvas.height-this.s.y + canvas.offset.y, this.size.x, this.size.y);
+		//context.drawImage(this.img, this.s.x, this.s.y);
+	}
 };
