@@ -53,6 +53,7 @@ var pineappleImg;
 var doorImg;
 var ballImg;
 var rockImg;
+var sammyImg;
 var treeImg;
 var platformTreeImg;
 var platformCloudImg;
@@ -112,6 +113,7 @@ function initDraw()
 	doorImg = loadImage("images/door.png");
 	ballImg = loadImage("images/dodgeball2.png");
 	rockImg = loadImage("images/rock1.png");
+	sammyImg = loadImage("images/sammy1.png");
 	
 	/* background images */
 	treeImg = loadImage("images/tree.png");
