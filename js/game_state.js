@@ -42,6 +42,11 @@ function GameState(state) {
 		break;
 	case GameState.STATES.TITLE_SCREEN:
 		this.bgcolour = COLOUR.BG_LEVEL1;
+		this.gameDraw = introDraw;
+		this.gameLogic = gameLogicTitle;
+		break;
+	case GameState.STATES.LEVEL_ONE_TITLE:
+		this.bgcolour = COLOUR.BG_LEVEL1;
 		this.gameDraw = titleDraw;
 		this.gameLogic = gameLogicTitle;
 		break;
@@ -103,20 +108,21 @@ function GameState(state) {
 GameState.STATES = {
 	DEAD : 0,
 	TITLE_SCREEN : 1,
-	LEVEL_ONE : 2,
-	LEVEL_TWO_TITLE : 3,
-	LEVEL_TWO : 4,
-	LEVEL_THREE_TITLE : 5,
-	LEVEL_THREE : 6,
-	LEVEL_FOUR_TITLE : 7,
-	LEVEL_FOUR : 8,
-	GAME_DONE_TITLE : 9,
-	GAME_DONE : 10
+	LEVEL_ONE_TITLE: 2,
+	LEVEL_ONE : 3,
+	LEVEL_TWO_TITLE : 4,
+	LEVEL_TWO : 5,
+	LEVEL_THREE_TITLE : 6,
+	LEVEL_THREE : 7,
+	LEVEL_FOUR_TITLE : 8,
+	LEVEL_FOUR : 9,
+	GAME_DONE_TITLE : 10,
+	GAME_DONE : 11
 };
 
 GameState.prototype.toString = function() {
 	switch (this.current) {
-	case GameState.STATES.TITLE_SCREEN:
+	case GameState.STATES.LEVEL_ONE_TITLE:
 		return "Level 1: Getting to school";
 	case GameState.STATES.LEVEL_TWO_TITLE:
 		return "Level 2: Physical Education";

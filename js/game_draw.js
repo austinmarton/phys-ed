@@ -46,6 +46,7 @@ COLOUR = {
 var HEALTH_WIDTH = 100;
 var HEALTH_HEIGHT = 20;
 
+var titleImg;
 var bgImage;
 var groundImg;
 var platformImg;
@@ -99,6 +100,7 @@ function initDraw()
 
 	viewCanvas.offset = new vector(0,0);
 
+	titleImg = loadImage("images/PhysEd.png");
 	bgImage = loadImage("images/dropman.png");
 	platformImg = loadImage("images/ground_grass.png");
 	platformCloudImg = loadImage("images/platform_cloud.png");
@@ -207,6 +209,11 @@ function deadDraw()
 
 	viewContext.fillStyle = COLOUR.BOARDER;
 	viewContext.fillRect(0, 0, WIDTH, HEIGHT);
+}
+
+function introDraw()
+{
+	viewContext.drawImage(titleImg, 0, 0, titleImg.width, titleImg.height, 0, 0, viewCanvas.width, viewCanvas.height);
 }
 
 function titleDraw()
