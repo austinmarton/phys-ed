@@ -198,6 +198,19 @@ function keyUpHandler(e)
 	}
 }
 
+function controlButtonHandler(keyCode, keyDown)
+{
+	if (keyCode == 37) { /* left */
+		input.left = keyDown;
+	} else if (keyCode == 38) { /* up */
+		input.up = keyDown;
+	} else if (keyCode == 39) { /* right */
+		input.right = keyDown;
+	} else if (keyCode == 40) { /* down */
+		input.down = keyDown;
+	}
+}
+
 function pauseHandler(e)
 {
 	if (input.pause) {

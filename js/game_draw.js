@@ -218,6 +218,8 @@ function deadDraw()
 function introDraw()
 {
 	viewContext.drawImage(titleImg, 0, 0, titleImg.width, titleImg.height, 0, 0, viewCanvas.width, viewCanvas.height);
+
+	controlsDraw();
 }
 
 function titleDraw()
@@ -231,4 +233,10 @@ function titleDraw()
 	viewContext.textBaseline = 'top';
 	viewContext.textAlign = 'center';
 	viewContext.fillText(state.toString(), viewCanvas.width/2, viewCanvas.width/2 - 100);
+}
+
+function controlsDraw()
+{
+	controlsContext.fillStyle = state.bgcolour;
+	controlsContext.fillRect(0, 0, 100, 100);
 }

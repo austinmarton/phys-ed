@@ -77,7 +77,18 @@ Gravity:
 
 </td>
 
-<td width="300"></td></tr></table>
+<td width="300">
+
+<center>
+<canvas id="controlsCanvas" width="200" height="200" style="display:none"></canvas><br>
+</center>
+
+<!-- Controls -->
+<center><table><tr><td></td><td><input type="button" id="upButton" value="/\" onMouseDown="controlButtonHandler(38, true)" onMouseUp="controlButtonHandler(38, false)"></input></td><td></td></tr>
+<tr><td><input type="button" id="leftButton" value="<" onMouseDown="controlButtonHandler(37, true)" onMouseUp="controlButtonHandler(37, false)"></input></td><td></td><td><input type="button" id="rightButton" value=">" onMouseDown="controlButtonHandler(39, true)" onMouseUp="controlButtonHandler(39, false)"></input></td></tr>
+<tr><td></td><td><input type="button" id="downButton" value="\/" onMouseDown="controlButtonHandler(40, true)" onMouseUp="controlButtonHandler(40, false)"></input></td><td></td></tr></table></center>
+
+</td></tr></table>
 
 <br>
 <canvas id="boardCanvas" width="300" height="280" style="display:none"></canvas><br>

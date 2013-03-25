@@ -23,6 +23,7 @@
 // Get boardCanvas and context
 var boardCanvas, boardContext;
 var viewCanvas, viewContext;
+var controlsCanvas, controlsContext;
 //var boardCanvas = document.getElementById('boardCanvas');
 //var context = boardCanvas.getContext('2d');
 var pauseButton, modButton;
@@ -72,6 +73,9 @@ function initPageObjects()
 
 	viewCanvas = document.getElementById('viewCanvas');
 	viewContext = viewCanvas.getContext('2d');
+
+	controlsCanvas = document.getElementById('controlsCanvas');
+	controlsContext = controlsCanvas.getContext('2d');
 
 	pauseButton = document.getElementById('pauseButton');
 	modButton = document.getElementById('modButton');
